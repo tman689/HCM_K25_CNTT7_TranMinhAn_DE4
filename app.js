@@ -51,19 +51,13 @@ function NewProduct () {
 function UpploadProduct () {
     let productCode = prompt("Nhập mã sản phẩm muốn cập nhật: ");
 
-    let index = -1
-    for (let i = 0; i < product.length; i++) {
-        if (product[i].productCode === productCode) {
-            index = i;
-            break;
-        }
-    }
-    if (product[i].productCode === -1) {
-        console.log("Không thấy mã sản phẩm");
+    let index = findIndex(s => s.id === productCode);
+    if ( index !== -1) {
+        product.stockQuantity = Number(prompt("Nhập số lượng tồn kho: "));
+        product.warrrentyMonth = Number(prompt("Nhập thời gian bảo hành"));
         return;
     }
-    product[index].stockQuantity = Number(prompt("Nhập số lượng tồn kho: "));
-    product[index].warrrentyMonth = Number(prompt("Nhập thời gian bảo hành: "));
+    console.log("Thêm mới thành công");
 }
 
 function DeleteProduct () {
